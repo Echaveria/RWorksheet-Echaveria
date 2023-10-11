@@ -1,0 +1,161 @@
+---
+title: "RWorksheet_Echaveria#3b"
+output: pdf_document
+date: "2023-10-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = TRUE}
+
+#1a
+
+dfRespondents <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+dfSex <- c(2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2)
+dfFathersOccupation <- c(1,3,3,3,1,2,3,1,1,1,3,2,1,3,3,1,3,1,2,1)
+dfPersonAtHome <- c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6)
+dfSiblingsAtSchool <- c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2)
+dfTypesOfHouses <- c(1,2,3,1,1,3,3,1,2,3,2,3,2,2,3,3,3,3,3,2)
+
+dfHouseholddata <- data.frame("Respondents" = dfRespondents,
+                              "Sex" = dfSex,
+                              "Fathers Occupation" = dfFathersOccupation,
+                              "Persons at Home" = dfPersonAtHome,
+                              "Siblings at School" = dfSiblingsAtSchool,
+                              "Types of Houses" = dfTypesOfHouses)
+dfHouseholddata
+
+
+#1b
+#the data is about a Household occupants
+
+summary(dfHouseholddata)
+
+#c
+
+#no, its 2.95
+
+#d
+
+first_second <- dfHouseholddata[1:2,]
+first_second
+
+#e
+third5and2nd4 <- dfHouseholddata[c(3,5),c(2,4)]
+third5and2nd4
+
+#f
+types_houses <- dfHouseholddata[,1]
+types_houses
+
+
+#g
+
+dfMaleFatherOccupation <- dfHouseholddata[dfHouseholddata$Sex == 1 & dfHouseholddata$Fathers.Occupation == 1, c(2,3)]
+dfMaleFatherOccupation
+
+
+#h
+
+dfFemaleSiblings <- dfHouseholddata[dfHouseholddata$Sex == 2 & dfHouseholddata$Siblings.at.School >= 5, c(2,5) ]
+dfFemaleSiblings
+
+
+
+
+#2
+
+
+dfofNum2 = data.frame(Ints=integer(),
+                      Doubles=double(),
+                      Characters=character(),
+                      Logicals=logical(),
+                      Factors=factor(),
+                      stringsAsFactors=FALSE)
+
+print("Structure of the empty dataframe:")
+print(str(dfofNum2))
+
+#it prints the structure of the dataframe
+
+
+#3
+
+df2Respondents <- c(1,2,3,4,5,6,7,8,9,10)
+df2Sex <- c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male","Female", "Male")
+df2FathersOccupation <- c(1,2,3,3,1,2,2,3,1,3)
+df2PersonAtHome<- c(5,7,3,8,6,4,4,2,11,6)
+df2SiblingsAtSchool <- c(2,3,0,5,2,3,1,2,6,2)
+df2TypeOfHouses <- c("Wood", "Congrete", "Congrete", "Wood", "Semi-congrete", "Semi-congrete", "Wood", "Semi-congrete", "Semi-congrete", "Congrete")
+
+df2Householddata <- data.frame("Respondetns" = df2Respondents,
+                               "Sex" = df2Sex,
+                               "Fathers Occupation" = df2FathersOccupation,
+                               "Person at Home" = df2PersonAtHome,
+                               "Siblings at Schoo" = df2SiblingsAtSchool,
+                               "Type of Houses" = df2TypeOfHouses)
+df2Householddata
+
+
+
+write.csv(df2Householddata, file = "Householddata.csv")
+
+
+#3a
+
+csvHouseholddata <- read.csv(file = "Householddata.csv")
+csvHouseholddata
+
+
+#3b
+
+
+csvHouseholddataSex <- as.integer(factor(csvHouseholddata$Sex, levels = c("Male", "Female")))
+csvHouseholddataSex
+
+
+
+#3c
+
+
+csvHouseholddataTypeOfHouses <- as.integer(factor(csvHouseholddata$Type.of.Houses, levels = c("Wood", "Congrete","Semi-congrete")))
+
+csvHouseholddataTypeOfHouses
+
+
+#3d
+#its already on int type
+csvHouseholddata$Fathers.Occupation
+csvHouseholddataFathersOccupation <- as.integer(factor(csvHouseholddata$FathersOccupation, levels = c("")))
+csvHouseholddataFathersOccupation
+
+#3e
+
+csvHouseholddataFemaleFatherOccupation <- csvHouseholddata[csvHouseholddata$Sex == "Female" & csvHouseholddata$Fathers.Occupation == 2, c(3,4)]
+csvHouseholddataFemaleFatherOccupation
+
+
+
+
+#3f
+
+csvHouseholddataSibmorethan5 <- csvHouseholddata[csvHouseholddata$Siblings.at.School>= 5 , c(2,6)]
+csvHouseholddataSibmorethan5
+
+
+
+#4
+# On this day, July 14, the bulk of the other opinions are negative. This suggests that on that specific day, some topics or events led to negative attitudes.
+
+# Although all attitudes rose on this day, July 15, the amount of negativity is still the highest. This implies that something occurred on that day that led to negative emotions.
+
+#Positive and neutral attitudes are mostly unchanged on these days, although negative attitudes are still predominant on July 17 and July 18.
+
+# Though there were still more unfavorable sensations among the others, all emotions peaked on July 20. This means the day was a blank slate for events.
+# On this day, July 21, all emotions are more intense, with the negative continuing to rule. This can imply that something happened on that specific day that caused people to respond badly.
+
+#This data can help us come to the conclusion that public opinion is influenced by the outside world and evolves over time.
+
+```

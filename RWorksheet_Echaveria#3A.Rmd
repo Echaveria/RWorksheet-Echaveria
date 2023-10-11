@@ -1,0 +1,145 @@
+---
+title: "RWorksheet_Echaveria#3A"
+output: pdf_document
+date: "2023-10-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r Let, echo = TRUE}
+
+#1 a. 
+LETTERS[1:11]
+
+# b.
+LETTERS[x=seq(1,26,by=2)]
+
+# c.
+vow <-LETTERS[c(1,5,9,15,21)]
+vow
+
+
+# d.
+lastFive <-letters[c(22:26)]
+lastFive
+
+
+# e. .
+betweenLetters <-letters[c(15:24)]
+betweenLetters
+
+# 2 a. 
+
+cit <-c("Tuguegarao City","Manila","Iloilo City","Tacloban","Samal Island","Davao City")
+cit
+
+#2 b. 
+
+temp <-c(42, 39, 34, 34, 30, 27)
+temp
+
+#2 c. 
+cittemp <- data.frame(cit, temp)
+cittemp
+
+
+
+#2 d. 
+names(cittemp) <- c("City","Temperature")
+cittemp
+
+
+
+#2 e. 
+
+str(cittemp)
+
+# the structure of the city_temp object is shows when you code it
+# the contents of the data frame shows in the console
+# the summary of the data frame is displayed
+
+# 2 f.
+twoRows <- cittemp[3:4,]
+twoRows
+
+
+
+
+#2 g.
+high<- cittemp[which.max(cittemp$Temperature),]
+high
+
+
+low <- cittemp[which.min(cittemp$Temperature),]
+low
+
+
+#2 a.
+matrx <-matrix(c(1:8,11:14),nrow = 3, ncol = 4)
+matrx
+
+
+#2 b. 
+multiply_matrx <-matrx*2
+multiply_matrx
+
+#2 c.
+
+rowTwooo <- multiply_matrx[2,]
+rowTwooo
+ 
+
+#2 d.
+twocolumns_and_rows <- multiply_matrx[c(1,2),c(3,4)]
+twocolumns_and_rows
+
+
+#2 e. 
+
+twocolumns_onerow <- multiply_matrx[3,c(2,3)]
+twocolumns_onerow
+
+
+#2 f.
+four_columns <- multiply_matrx[,4]
+four_columns
+
+#2 g. 
+dimnames( multiply_matrx) <- list(c("isa", "dalawa", "tatlo"), c("uno", "dos", "tres", "quatro"))
+multiply_matrx 
+
+
+
+#2 h.
+
+matrx
+dim(matrx) <- c(6,2)
+matrx
+
+
+#3 a.
+vValues <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+rep_values <- rep(vValues, each = 2)
+
+array <- array(rep_values, dim = c(2,4,3))
+array
+
+
+
+
+#3 b.
+# My array shows that it has 3 dimensions
+
+#3 c.
+
+dimnames(array)<-list(
+  letters[1:2], # row names
+  LETTERS[1:4], # col names
+c("1st-Dimensional Array","2nd-Dimensional Array","3rd-Dimensional Array")# dim names
+)
+
+array
+
+
+```
